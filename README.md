@@ -43,17 +43,24 @@ teiko-proj/
    ```bash
    make pipeline
    ```
+
    This executes:
-      Part 1: Creates SQLite database and loads data from cell-count.csv
-      Part 2: Calculates relative frequencies for each cell population
-      Part 3: Performs statistical comparison (responders vs non-responders)
-      Part 4: Analyzes baseline melanoma subset and saves results
+
+   - Part 1: Creates SQLite database and loads data from `cell-count.csv`
+   - Part 2: Calculates relative frequencies for each cell population
+   - Part 3: Performs statistical comparison (responders vs non-responders)
+   - Part 4: Analyzes baseline melanoma subset and saves results
 
 4. **Launch the interactive dashboard**
+   ```bash
+   make dashboard
+   ```
+   Then open your browser to http://localhost:8501
 
+   ##Database Schema Design
+   The data is normalized into three tables for scalability and query efficiency:
 
-
-
+   ###Table 1: subjects
 
 
 
