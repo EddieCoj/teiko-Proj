@@ -34,7 +34,21 @@ teiko-proj/
    cd teiko-Proj##
 
 2. **Install dependencies**
+   ```bash
+   make setup
+   ```
+   This installs all required Python packages (pandas, sqlite3, plotly, streamlit, scipy, etc.)
+
 3. **Run the complete analysis pipeline**
+   ```bash
+   make pipeline
+   ```
+   This executes:
+      Part 1: Creates SQLite database and loads data from cell-count.csv
+      Part 2: Calculates relative frequencies for each cell population
+      Part 3: Performs statistical comparison (responders vs non-responders)
+      Part 4: Analyzes baseline melanoma subset and saves results
+
 4. **Launch the interactive dashboard**
 
 
