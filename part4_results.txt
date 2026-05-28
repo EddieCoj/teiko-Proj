@@ -1,0 +1,14 @@
+PART 4: BASELINE MELANOMA ANALYSIS
+========================================
+Samples per project:
+project
+prj1    384
+prj3    272
+
+Responders: 331
+Non-responders: 325
+
+Males: 344
+Females: 312
+
+Average B cells for male responders: 10401.28
