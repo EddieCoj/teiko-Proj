@@ -57,10 +57,14 @@ teiko-proj/
    ```
    Then open your browser to http://localhost:8501
 
-   ##Database Schema Design
-   The data is normalized into three tables for scalability and query efficiency:
+##Database Schema Design
+The data is normalized into three tables for scalability and query efficiency:
 
-   ###Table 1: subjects
+###Table 1: subjects
+
+###Table 2: samples
+
+###Table 3: cell_counts
 
 
 
