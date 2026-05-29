@@ -59,16 +59,6 @@ teiko-proj/
 
 ## Database Schema Design
 
-The data is normalized into three tables for scalability and query efficiency:
-
-### Table 1: subjects
-
-### Table 2: samples
-
-### Table 3: cell_counts
-
-## Database Schema Design
-
 The data is normalized into three tables for scalability and query efficiency.
 
 ---
