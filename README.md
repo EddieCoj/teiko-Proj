@@ -88,7 +88,7 @@ The data is normalized into three tables for scalability and query efficiency.
 | `project`                   | TEXT               | Research project identifier           |
 | `time_from_treatment_start` | INTEGER            | Timepoint relative to treatment start |
 
-**Rationale:** Sample-specific metadata is separated from subject demographics, supporting longitudinal analysis and multiple samples per patient.
+**Rationale:** Separates sample-specific metadata from subject demographics, allowing longitudinal analysis (multiple samples per subject).
 
 ---
 
@@ -100,10 +100,25 @@ The data is normalized into three tables for scalability and query efficiency.
 | `population` | TEXT               | Immune cell population name       |
 | `count`      | INTEGER            | Raw cell count for the population |
 
-**Rationale:** Cell population measurements are stored separately to support scalable many-to-one relationships between samples and immune populations.
+**Rationale:** "Tidy data" format with one row per cell population per sample. This vertical structure scales efficiently because adding a new cell type doesn't require schema changes.
+
+### Scalability Considerations
+- 100+ projects, 10,000+ samples: Indexes on foreign keys (idx_samples_project, idx_cell_counts_sample) keep JOIN operations fast (O(log n) instead of O(n²))
+- New cell types: Simply insert new rows into cell_counts with the new population name - no ALTER TABLE needed
+- Additional metadata: Add columns to samples table (e.g., treatment_dose, lab_batch) without affecting existing analysis
+- Query performance: Composite primary key on cell_counts enables instant lookups for specific (sample, population) pairs
 
 
+## Analysis Summary
 
+### Part 2: Relative Frequencies
+For each sample, calculates the percentage of each immune cell population relative to the total cell count. Output saved to part2_frequencies.csv.
+
+### Part 3: Responders vs Non-Responders
+- Population: Melanoma patients receiving miraclib (PBMC samples only)
+- Method: Mann-Whitney U test comparing relative frequencies between responders and non-responders
+- Key finding: CD4+ T cells showed a statistically significant difference (p = 0.0133)
+- Output: Boxplots (dashboard) and statistical summary (part3_statistics.csv)
 
 
 
