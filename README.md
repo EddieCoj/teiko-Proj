@@ -67,6 +67,52 @@ The data is normalized into three tables for scalability and query efficiency:
 
 ### Table 3: cell_counts
 
+## Database Schema Design
+
+The data is normalized into three tables for scalability and query efficiency.
+
+---
+
+### Table 1: `subjects`
+
+| Column       | Type               | Description                   |
+| ------------ | ------------------ | ----------------------------- |
+| `subject_id` | TEXT (PRIMARY KEY) | Unique patient identifier     |
+| `age`        | INTEGER            | Patient age                   |
+| `sex`        | TEXT               | Male (`M`) or Female (`F`)    |
+| `condition`  | TEXT               | Disease type (e.g., melanoma) |
+
+**Rationale:** Demographics are stored once per subject, eliminating redundancy when a subject contributes multiple samples.
+
+---
+
+### Table 2: `samples`
+
+| Column                      | Type               | Description                           |
+| --------------------------- | ------------------ | ------------------------------------- |
+| `sample_id`                 | TEXT (PRIMARY KEY) | Unique sample identifier              |
+| `subject_id`                | TEXT (FOREIGN KEY) | Links sample to subject               |
+| `response`                  | TEXT               | Treatment response (`yes` / `no`)     |
+| `sample_type`               | TEXT               | Biological sample type (e.g., PBMC)   |
+| `treatment`                 | TEXT               | Treatment administered                |
+| `project`                   | TEXT               | Research project identifier           |
+| `time_from_treatment_start` | INTEGER            | Timepoint relative to treatment start |
+
+**Rationale:** Sample-specific metadata is separated from subject demographics, supporting longitudinal analysis and multiple samples per patient.
+
+---
+
+### Table 3: `cell_counts`
+
+| Column       | Type               | Description                       |
+| ------------ | ------------------ | --------------------------------- |
+| `sample_id`  | TEXT (FOREIGN KEY) | Links cell counts to sample       |
+| `population` | TEXT               | Immune cell population name       |
+| `count`      | INTEGER            | Raw cell count for the population |
+
+**Rationale:** Cell population measurements are stored separately to support scalable many-to-one relationships between samples and immune populations.
+
+
 
 
 
