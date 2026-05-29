@@ -176,22 +176,6 @@ Eddie Cojulun - Technical Exam Submission for Teiko
 This project is for evaluation purposes only.
 
 
-## Steps to paste into GitHub:
-
-1. Go to `https://github.com/EddieCoj/teiko-Proj`
-2. Click on `README.md`
-3. Click the pencil icon (✏️) in the top-right of the file view
-4. **Delete** all existing content
-5. **Copy** the entire template above
-6. **Paste** it into the editor
-7. Scroll down to "Commit changes"
-8. Leave "Commit directly to the main branch" selected
-9. Click **"Commit changes"**
-
-That's it! Your README will be updated immediately.
-
-**Don't forget to also delete the duplicate `README` file (without .md) while you're there!**
-
 
 
 
