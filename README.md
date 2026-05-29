@@ -120,6 +120,80 @@ For each sample, calculates the percentage of each immune cell population relati
 - Key finding: CD4+ T cells showed a statistically significant difference (p = 0.0133)
 - Output: Boxplots (dashboard) and statistical summary (part3_statistics.csv)
 
+### Part 4: Baseline Subset Analysis
+- Filter: Melanoma, PBMC, baseline (time=0), miraclib treatment
+- Outputs:
+   - Sample counts per project: prj1 (384), prj3 (272)
+   - Responder/non-responder counts: 331 / 325
+   - Gender distribution: Male (344), Female (312)
+   - Average B cell count for male responders: 10,401.28
+
+
+## Dashboard Features
+The Streamlit dashboard provides:
+   - Part 2: Sortable frequency table with CSV download
+   - Part 3: Interactive boxplots + statistical results with significance indicators
+   - Part 4: Key metrics and bar charts for project, response, and gender distributions
+
+
+## Dependencies
+All dependencies are listed in requirements.txt and installed via make setup:
+   - pandas >= 1.5.0 - Data manipulation
+   - sqlalchemy >= 2.0.0 - SQL toolkit
+   - plotly >= 5.14.0 - Interactive visualizations
+   - streamlit >= 1.25.0 - Dashboard framework
+   - scipy >= 1.10.0 - Statistical tests (Mann-Whitney U)
+
+
+## Troubleshooting
+
+### "Database not found" Error
+
+Run `make pipeline` first to generate `teiko.db`.
+
+---
+
+### Port 8501 Already in Use
+
+Run Streamlit on a different port:
+
+```bash
+streamlit run dashboard/app.py --server.port 8502
+```
+
+---
+
+### Missing `cell-count.csv`
+
+Ensure the input file exists in the project root directory.
+
+
+## Author
+Eddie Cojulun - Technical Exam Submission for Teiko
+
+
+## License
+This project is for evaluation purposes only.
+
+
+## Steps to paste into GitHub:
+
+1. Go to `https://github.com/EddieCoj/teiko-Proj`
+2. Click on `README.md`
+3. Click the pencil icon (✏️) in the top-right of the file view
+4. **Delete** all existing content
+5. **Copy** the entire template above
+6. **Paste** it into the editor
+7. Scroll down to "Commit changes"
+8. Leave "Commit directly to the main branch" selected
+9. Click **"Commit changes"**
+
+That's it! Your README will be updated immediately.
+
+**Don't forget to also delete the duplicate `README` file (without .md) while you're there!**
+
+
+
 
 
 
